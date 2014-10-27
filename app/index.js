@@ -14,7 +14,7 @@ var RjsEmberGenerator = yeoman.generators.Base.extend({
 
     // Have Yeoman greet the user.
     this.log(yosay(
-      'Welcome to the fantastic RjsEmber generator!'
+      'Welcome to the fantastic Rjs-Ember generator!'
     ));
 
     var prompts = [{
