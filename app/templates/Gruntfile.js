@@ -216,7 +216,7 @@ module.exports = function (grunt) {
       grunt.registerTask('test', ['clean:coverage', 'karma:unit']);
 
       // Setup default task that runs when you just run 'grunt'
-      grunt.registerTask('default', ['bower-install', 'lint', 'test', 'build']);
+      grunt.registerTask('default', ['bower-install', 'lint', 'build', 'test']);
 };
 
 }());

@@ -17,27 +17,19 @@ var RjsEmberGenerator = yeoman.generators.Base.extend({
       'Welcome to the fantastic Rjs-Ember generator!'
     ));
 
-    var prompts = [{
-      type: 'confirm',
-      name: 'someOption',
-      message: 'Would you like to enable this option?',
-      default: true
-    }];
-
-    this.prompt(prompts, function (props) {
-      this.someOption = props.someOption;
-
-      done();
-    }.bind(this));
+    done();
   },
 
   writing: {
     app: function () {
-      this.dest.mkdir('app');
-      this.dest.mkdir('app/templates');
-
-      this.src.copy('_package.json', 'package.json');
-      this.src.copy('_bower.json', 'bower.json');
+      this.src.copy('package.json', 'package.json');
+      this.src.copy('bower.json', 'bower.json');
+      this.src.copy('Gruntfile.js', 'Gruntfile.js');
+      this.src.copy('karma.conf.js', 'karma.conf.js');
+      this.src.copy('README.md', 'README.md');
+      
+      this.directory('app', 'app');
+      this.directory('test', 'test');
     },
 
     projectfiles: function () {
