@@ -51,6 +51,13 @@ module.exports = function (grunt) {
           bower: ["<%= config.app %>/bower_components"],
           all: [config.build, config.dist, "coverage", "<%= config.app %>/bower_components"]
         },
+        
+        "bower-install-simple": {
+          options: {
+              color: true,
+              directory: "app/bower_components"
+          }
+        },
 
         requirejs: {
           main: {
