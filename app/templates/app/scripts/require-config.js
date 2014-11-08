@@ -19,10 +19,10 @@ require.config({
     
     //application
     application: 'scripts/application',
-    applicationRegistration: 'scripts/applicationRegistration',
     applicationRoute: 'scripts/routes/application.route',
-    store: 'scripts/store',
-    router: 'scripts/router'
+    'app-registration': 'scripts/applicationRegistration',
+    'app-store': 'scripts/store',
+    'app-router': 'scripts/router'
   },
   shim:{  
     'lodash': {  

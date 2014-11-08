@@ -35,6 +35,7 @@ var RjsEmberGenerator = yeoman.generators.Base.extend({
     projectfiles: function () {
       this.src.copy('editorconfig', '.editorconfig');
       this.src.copy('jshintrc', '.jshintrc');
+      this.src.copy('bowerrc', '.bowerrc');
     }
   },
 
