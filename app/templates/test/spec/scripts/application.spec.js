@@ -1,9 +1,10 @@
-define(['Squire', 'ember'], function (Squire) {
+define(['squire', 'ember'], function (Squire) {
   describe("Unit Tests", function(){
     describe("application", function() {
    
       var mockDS, mockEmber, underTest;
-      
+   
+      var async = new AsyncSpec(this);
       async.beforeEach(function (done) {
         mockDS = {
           FixtureAdapter: {
