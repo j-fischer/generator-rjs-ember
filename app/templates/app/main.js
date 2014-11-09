@@ -3,10 +3,10 @@ require(['scripts/require-config'], function(){
     'log4javascript',
     'bootstrap',
     'ember',
-    'application',
     'app-store',
     'app-registration',
-    'app-route'], function(){
+    'application',
+    'applicationRoute'], function(){
       console.log("MAIN ready!");
     }
   );  

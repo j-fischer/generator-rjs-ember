@@ -55,7 +55,8 @@ module.exports = function (grunt) {
         "bower-install-simple": {
           main: {
             options: {
-              color: true
+              color: true,
+              directory: "app/bower_components"
             }
           }
         },
@@ -72,7 +73,6 @@ module.exports = function (grunt) {
               },             
               
               name: 'main',
-              include: ['require-lib'],
               out: '<%= config.build %>/main.js',
               wrap: false,
               optimizeAllPluginResources : true,

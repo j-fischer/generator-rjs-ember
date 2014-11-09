@@ -19,10 +19,8 @@ module.exports = function (config) {
       {pattern: 'app/lib/**/*.js', included: false},
       {pattern: 'app/scripts/**/*.js', included: false},
       {pattern: 'test/spec/**/*.spec.js', included: false},
-      {pattern: 'test/lib/**/*.js', included: false},
-      {pattern: 'test/mock/*.js', included: false},
 
-      'karma.main.js'
+      'test/karma.main.js'
     ],
 
 
