@@ -1,7 +1,7 @@
 define([
     'application',
     'ember',
-    'router',
+    'app-router',
     'scripts/views/application.view'
   ],
   function(App, Ember){

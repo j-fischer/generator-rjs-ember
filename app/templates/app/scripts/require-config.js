@@ -38,7 +38,7 @@ require.config({
     },
     'handlebars': {
       deps: ['jquery'],
-      exports: 'Ember.'
+      exports: 'Ember'
     },
     'ember': {
         deps: ['jquery', 'handlebars' ],
