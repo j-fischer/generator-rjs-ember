@@ -73,7 +73,7 @@ module.exports = function (grunt) {
               },             
               
               name: 'main',
-              out: '<%= config.build %>/main.js',
+              out: '<%= config.build %>/scripts/main.js',
               wrap: false,
               optimizeAllPluginResources : true,
               findNestedDependencies : true,
@@ -102,13 +102,6 @@ module.exports = function (grunt) {
           }
         },
         
-        htmlrefs: {
-          dist: {
-            src: ['<%= config.build %>/index.html'],
-            dest: '<%= config.build %>/index.html'
-          }
-        },
-
         watch : {
           css : {
             files : ['app/styles/**/*.css', 'app/styles/**/*.scss'],
@@ -155,10 +148,15 @@ module.exports = function (grunt) {
           app: {
             files: [
               {
-                expand: true,
-                cwd: 'app',
-                src: ['index.html'],
-                dest: '<%= config.build %>',
+                expand: false,
+                src: '<%= config.app %>/index.html',
+                dest: '<%= config.build %>/index.html',
+                flatten: false
+              },
+              {
+                expand: false,
+                src: '<%= config.app %>/bower_components/requirejs/require.js',
+                dest: '<%= config.build %>/scripts/require.js',
                 flatten: false
               }
             ]
@@ -210,8 +208,7 @@ module.exports = function (grunt) {
         'clean:build',
         'requirejs:main',
         'sass',
-        'copy:app',
-        'htmlrefs:dist'
+        'copy:app'
       ]);
       
       // Code Verification
