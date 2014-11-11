@@ -134,28 +134,24 @@ module.exports = function (grunt) {
       },
 
       copy: {
-        dist: {
-          files: [
-            {
-              expand: true,
-              cwd: '<%= config.build %>',
-              src: '**',
-              dest: '<%= config.dist %>',
-              flatten: false
-            },
-            {
-              expand: false,
-              src: '<%= config.app %>/styles/style.css',
-              dest: '<%= config.dist %>/styles/style.css',
-              flatten: false
-            },
-            {
-              expand: false,
-              src: '<%= config.app %>/bower_components/requirejs/require.js',
-              dest: '<%= config.dist %>/scripts/require.js',
-              flatten: false
-            }
-          ]
+        build: {
+          expand: true,
+          cwd: '<%= config.build %>',
+          src: '**',
+          dest: '<%= config.dist %>',
+          flatten: false
+        },
+        styles: {
+          expand: false,
+          src: '<%= config.app %>/styles/style.css',
+          dest: '<%= config.dist %>/styles/style.css',
+          flatten: false
+        },
+        require: {
+          expand: false,
+          src: '<%= config.app %>/bower_components/requirejs/require.js',
+          dest: '<%= config.dist %>/scripts/require.js',
+          flatten: false q
         },
         index: {
           src: '<%= config.app %>/index.html',
@@ -269,7 +265,7 @@ module.exports = function (grunt) {
       'clean:build',
       'requirejs:main',
       'sass',
-      'copy:dist'
+      'copy'
     ]);
   
     // Code Verification
@@ -284,10 +280,21 @@ module.exports = function (grunt) {
     // Setup default task that runs when you just run 'grunt'
     grunt.registerTask('default', ['bower-install', 'lint', 'test', 'build']);
   
-    grunt.registerTask('serve', [
-      'concurrent:server',
-      'connect:livereload',
-      'watch'
-    ]);
+    grunt.registerTask('serve', 'start the server and preview your app, --allow-remote for remote access', 
+      function (target) {
+        if (grunt.option('allow-remote')) {
+          grunt.config.set('connect.options.hostname', '0.0.0.0');
+        }
+        if (target === 'dist') {
+          return grunt.task.run(['build', 'connect:dist:keepalive']);
+        }
+      
+        grunt.task.run([
+          'concurrent:server',
+          'connect:livereload',
+          'watch'
+        ]);
+      }
+    );
   };
 }());
