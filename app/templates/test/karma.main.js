@@ -22,7 +22,6 @@ require([ 'scripts/require-config' ], function() {
     paths: {
       'sinon': 'bower_components/sinonjs/sinon',
       'squire': 'bower_components/squire/src/Squire',
-      'jasmine-async': 'bower_components/jasmine.async/src/jasmine.async',
       'jasmine-sinon': 'bower_components/jasmine-sinon/lib/jasmine-sinon'
     },
     shim: {
@@ -32,10 +31,6 @@ require([ 'scripts/require-config' ], function() {
       },
       'jasmine-sinon': {
         deps: ['jquery', 'sinon'],
-        exports: 'jasmine'
-      },
-      'jasmine-async': {
-        deps: [],
         exports: 'jasmine'
       },
       'squire': {
@@ -50,8 +45,7 @@ require([ 'scripts/require-config' ], function() {
         ], function(Ember) {
 
     require([
-             'lodash',
-             'jasmine-async'
+             'lodash'
              ], function(_) {
 
       require(tests, function() {

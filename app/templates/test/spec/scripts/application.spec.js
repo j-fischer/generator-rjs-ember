@@ -4,8 +4,7 @@ define(['squire', 'ember'], function (Squire) {
    
       var mockDS, mockEmber, underTest;
    
-      var async = new AsyncSpec(this);
-      async.beforeEach(function (done) {
+      beforeEach(function (done) {
         mockDS = {
           FixtureAdapter: {
             extend: sinon.stub()
