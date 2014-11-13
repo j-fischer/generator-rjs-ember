@@ -151,7 +151,7 @@ module.exports = function (grunt) {
           expand: false,
           src: '<%= config.app %>/bower_components/requirejs/require.js',
           dest: '<%= config.dist %>/scripts/require.js',
-          flatten: false q
+          flatten: false
         },
         index: {
           src: '<%= config.app %>/index.html',
