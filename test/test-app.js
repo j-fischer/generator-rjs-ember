@@ -67,6 +67,8 @@ describe('rjs-ember:app with skip-install option', function () {
 });
 
 describe('run grunt', function () {
+  // Build should pass in less than 60s even on older computers. 
+  // Tested on late 2011 Mac Book Pro with ~30s execution time.
   this.timeout(60000);
   
   var app;
@@ -75,7 +77,8 @@ describe('run grunt', function () {
     app = helpers
       .run(path.join(__dirname, '../app'))
       .inDir(path.join(os.tmpdir(), './temp-test'), function (dir) {
-        // node_modules
+        
+        // Note: Assumes that 'npm install' was run inside the fixtures folder.
         fs.symlinkSync(path.join(__dirname, 'fixtures/node_modules'),
           path.join(dir, 'node_modules'), 'dir');
         
