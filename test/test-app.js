@@ -68,8 +68,8 @@ describe('rjs-ember:app with skip-install option', function () {
 
 describe('run grunt', function () {
   // Build should pass in less than 60s even on older computers. 
-  // Tested on late 2011 Mac Book Pro with ~30s execution time.
-  this.timeout(60000);
+  // Tested on late 2011 Mac Book Pro with 30-60s execution time.
+  this.timeout(90000);
   
   var app;
   
