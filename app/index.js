@@ -7,17 +7,20 @@ var yosay = require('yosay');
 var RjsEmberGenerator = yeoman.generators.Base.extend({
   initializing: function () {
     this.pkg = require('../package.json');
-  },
+    
+    this.option('skip-install', {
+      desc: 'Prevent yeoman from installing the bower components',
+      type: 'Boolean',
+      defaults: false,
+      hide: false
+    });
+  },    
 
   prompting: function () {
-    var done = this.async();
-
     // Have Yeoman greet the user.
     this.log(yosay(
-      'Welcome to the fantastic Rjs-Ember generator!'
+      'Welcome to the Rjs-Ember generator!\nPlease read the README.me files for details on the project setup and tools.'
     ));
-
-    done();
   },
 
   writing: {
@@ -40,7 +43,15 @@ var RjsEmberGenerator = yeoman.generators.Base.extend({
   },
 
   end: function () {
-    this.installDependencies();
+    var generator = this;    
+    generator.installDependencies({
+      bower: true,
+      npm: false,
+      skipInstall: generator.options['skip-install'],
+      callback: function () {
+        generator.log("Done... please run 'npm install' to download node modules. You may have to run it with administrative privileges. Cheers");
+      }
+    });
   }
 });
 
