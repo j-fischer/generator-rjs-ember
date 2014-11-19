@@ -19,7 +19,7 @@ var RjsEmberGenerator = yeoman.generators.Base.extend({
   prompting: function () {
     // Have Yeoman greet the user.
     this.log(yosay(
-      'Welcome to the Rjs-Ember generator!\nPlease read the README.me files for details on the project setup and tools.'
+      'Welcome to the Rjs-Ember generator!'
     ));
   },
 
@@ -29,7 +29,6 @@ var RjsEmberGenerator = yeoman.generators.Base.extend({
       this.src.copy('bower.json', 'bower.json');
       this.src.copy('Gruntfile.js', 'Gruntfile.js');
       this.src.copy('karma.conf.js', 'karma.conf.js');
-      this.src.copy('README.md', 'README.md');
       
       this.directory('app', 'app');
       this.directory('test', 'test');

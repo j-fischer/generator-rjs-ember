@@ -24,8 +24,7 @@ describe('rjs-ember:app with skip-install option', function () {
       '.editorconfig',
       '.jshintrc',
       '.bowerrc',
-      'Gruntfile.js',
-      'README.md'
+      'Gruntfile.js'
     ]);
   });
   
@@ -69,7 +68,7 @@ describe('rjs-ember:app with skip-install option', function () {
 describe('run grunt', function () {
   // Build should pass in less than 60s even on older computers. 
   // Tested on late 2011 Mac Book Pro with 30-60s execution time.
-  this.timeout(90000);
+  this.timeout(120000);
   
   var app;
   
