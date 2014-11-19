@@ -1,47 +1,73 @@
-# generator-rjs-ember [![Build Status](https://secure.travis-ci.org/rudi9/generator-rjs-ember.png?branch=master)](https://travis-ci.org/rudi9/generator-rjs-ember)
+# Web app generator [![Build Status](https://secure.travis-ci.org/yeoman/generator-webapp.svg?branch=master)](http://travis-ci.org/yeoman/generator-webapp)
 
-> [Yeoman](http://yeoman.io) generator
+[Yeoman](http://yeoman.io) generator that scaffolds out a front-end web app using Ember and RequireJS.
+
+## Features
+
+* CSS Autoprefixing
+* Built-in preview server with LiveReload
+* Automagically compile Sass
+* Automagically lint your scripts
+* Unit Testing with Karma and PhantomJS
+* Bootstrap for Sass
+* Dependency management with Bower
+
+For more information on what `generator-rjs-ember` can do for you, take a look at the Gruntfile.js. 
 
 
 ## Getting Started
 
-### What is Yeoman?
+- Install: `npm install -g generator-rjs-ember`
+- Run: `yo rjs-ember`
+- Run `grunt` for building and `grunt serve` for preview[\*](#grunt-serve-note). `--allow-remote` option for remote access.
 
-Trick question. It's not a thing. It's this guy:
 
-![](http://i.imgur.com/JHaAlBJ.png)
+#### Third-Party Dependencies
 
-Basically, he wears a top hat, lives in your computer, and waits for you to tell him what kind of application you wish to create.
+*(HTML/CSS/JS/Images/etc)*
 
-Not every new computer comes with a Yeoman pre-installed. He lives in the [npm](https://npmjs.org) package repository. You only have to ask for him once, then he packs up and moves into your hard drive. *Make sure you clean up, he likes new and shiny things.*
+All app dependencies are managed by Bower, any dependencies related to grunt and the build tools are managed through NPM. Grunt will automatically update the Bower components on every build.
 
-```bash
-npm install -g yo
-```
+There are two non-managed libraries by Matt Mastracci part of this solution:
 
-### Yeoman Generators
+[requirejs-ember-handlebars](https://github.com/mmastrac/requirejs-ember-handlebars)
+requirejs-handlebars
 
-Yeoman travels light. He didn't pack any generators when he moved in. You can think of a generator like a plug-in. You get to choose what type of application you wish to create, such as a Backbone application or even a Chrome extension.
+#### Grunt Serve Note
 
-To install generator-rjs-ember from npm, run:
+Note: `grunt server` was used for previewing in earlier versions of the project, and has since been deprecated in favor of `grunt serve`.
 
-```bash
-npm install -g generator-rjs-ember
-```
 
-Finally, initiate the generator:
+## Options
 
-```bash
-yo rjs-ember
-```
+* `--skip-install`
 
-### Getting To Know Yeoman
+  Skips the automatic execution of `bower` and `npm` after scaffolding has finished.
 
-Yeoman has a heart of gold. He's a person with feelings and opinions, but he's very easy to work with. If you think he's too opinionated, he can be easily convinced.
+## Application Overview
 
-If you'd like to get to know Yeoman better and meet some of his friends, [Grunt](http://gruntjs.com) and [Bower](http://bower.io), check out the complete [Getting Started Guide](https://github.com/yeoman/yeoman/wiki/Getting-Started).
+This is a standalone application. The 'index.html' file is the container of the application and not meant to be changed other than adding more tags to the head element. Please note that the 
+build script will replace some paths references in the file when creating the final distribution. 'main.js' is the entry point of the application. It will load the 'reuqire-config.js' file 
+and set up the initial dependencies. From there, the application route will be the entry point for the actual application. There is a folder called 'services', which is currently empty. The 
+intention with this folder is to separate the business logic from the controllers. Services should extend from Ember.Object and be registered and injected through the 
+applicationRegistration.js file, which will guarantee the proper order of the instantiations. 
+
+The advantage that I see in this architecture is cleaner organization of dependencies. Controllers should only depend on services, not other controllers. And services should only be 
+loosly coupled by passing another service to a method as an argument. 
+
+Another advantage with RequireJS and Ember is that RequireJS allows for encapsulation where one can define "private static" helper functions outside of the Ember object declaration. 
+
+I hope this setup will allow for a better organisation of the code. 
+
+## Contribute
+
+See the [contributing docs](https://github.com/yeoman/yeoman/blob/master/contributing.md).
+
+Note: We are regularly asked whether we can add or take away features. If a change is good enough to have a positive impact on all users, we are happy to consider it.
+
+If not, `generator-rjs-ember` is fork-friendly and you can always maintain a custom version which you `npm install && npm link` to continue using via `yo rjs-ember` or a name of your choosing.
 
 
 ## License
 
-MIT
+[MIT](http://opensource.org/licenses/MIT)
