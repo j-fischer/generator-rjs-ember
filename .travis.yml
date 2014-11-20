@@ -5,6 +5,7 @@ before_install:
   - currentfolder=${PWD##*/}
   - if [ "$currentfolder" != 'generator-rjs-ember' ]; then cd .. && eval "mv $currentfolder generator-rjs-ember" && cd generator-rjs-ember; fi
 before_script: 
+  - gem install sass
   - cd test/fixtures
   - npm install
   - cd ../..
