@@ -1,14 +1,14 @@
 {
   "name": "generator-rjs-ember",
   "version": "0.1.0",
-  "description": "Yeoman generator",
+  "description": "Yeoman generator for a web application using RequireJS and Ember",
   "license": "MIT",
   "main": "app/index.js",
-  "repository": "rudi9/generator-rjs-ember",
+  "repository": "j-fischer/generator-rjs-ember",
   "author": {
-    "name": "Johannes",
+    "name": "Johannes Fischer",
     "email": "",
-    "url": "https://github.com/rudi9"
+    "url": "https://github.com/j-fischer"
   },
   "engines": {
     "node": ">=0.10.0"
