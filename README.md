@@ -62,9 +62,7 @@ I hope this setup will allow for a better organisation of the code.
 
 ## Contribute
 
-See the [contributing docs](https://github.com/yeoman/yeoman/blob/master/contributing.md).
-
-Note: We are regularly asked whether we can add or take away features. If a change is good enough to have a positive impact on all users, we are happy to consider it.
+Feel free to contact me if you like to contribute.
 
 If not, `generator-rjs-ember` is fork-friendly and you can always maintain a custom version which you `npm install && npm link` to continue using via `yo rjs-ember` or a name of your choosing.
 
