@@ -1,4 +1,4 @@
-# Web app generator [![Build Status](https://secure.travis-ci.org/yeoman/generator-webapp.svg?branch=master)](http://travis-ci.org/yeoman/generator-webapp)
+# Web app generator [![Build Status](https://api.travis-ci.org/j-fischer/generator-rjs-ember.svg?branch=master)
 
 [Yeoman](http://yeoman.io) generator that scaffolds out a front-end web app using Ember and RequireJS.
 
