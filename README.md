@@ -31,6 +31,7 @@ All app dependencies are managed by Bower, any dependencies related to grunt and
 There are two non-managed libraries by Matt Mastracci part of this solution:
 
 [requirejs-ember-handlebars](https://github.com/mmastrac/requirejs-ember-handlebars)
+and
 requirejs-handlebars
 
 #### Grunt Serve Note
@@ -42,7 +43,7 @@ Note: `grunt server` was used for previewing in earlier versions of the project,
 
 * `--skip-install`
 
-  Skips the automatic execution of `bower` and `npm` after scaffolding has finished.
+  Skips the automatic execution of `bower` after scaffolding has finished.
 
 ## Application Overview
 
