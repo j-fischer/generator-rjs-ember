@@ -4,4 +4,6 @@ node_js:
 before_install:
   - currentfolder=${PWD##*/}
   - if [ "$currentfolder" != 'generator-rjs-ember' ]; then cd .. && eval "mv $currentfolder generator-rjs-ember" && cd generator-rjs-ember; fi
+  - cd test/fixtures
+  - npm install
 
