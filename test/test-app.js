@@ -87,6 +87,7 @@ describe('run grunt', function () {
   
   it ('should pass grunt build', function (done) {
     app
+      .withOptions({ 'skip-install': true })
       .on('end', function () {
         exec('grunt', function (error, stdout, stderr) {
           if (error)
