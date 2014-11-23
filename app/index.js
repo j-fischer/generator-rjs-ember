@@ -46,7 +46,11 @@ var RjsEmberGenerator = yeoman.generators.Base.extend({
     generator.installDependencies({
       skipInstall: generator.options['skip-install'],
       callback: function () {
-        generator.log("All done. You can run 'grunt serve' to see the application in action. Cheers");
+		  if (generator.options['skip-install']) {
+			  generator.log("All done. The installation of the dependencies has been skipped. You need to run 'npm install' before you can run 'grunt serve' to see the application in action. Cheers");
+		  } else {
+			  generator.log("All done. You can run 'grunt serve' to see the application in action. Cheers");
+		  }
       }
     });
   }
