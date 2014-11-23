@@ -44,11 +44,9 @@ var RjsEmberGenerator = yeoman.generators.Base.extend({
   end: function () {
     var generator = this;    
     generator.installDependencies({
-      bower: true,
-      npm: false,
       skipInstall: generator.options['skip-install'],
       callback: function () {
-        generator.log("Done... please run 'npm install' to download node modules. You may have to run it with administrative privileges. Cheers");
+        generator.log("All done. You can run 'grunt serve' to see the application in action. Cheers");
       }
     });
   }
