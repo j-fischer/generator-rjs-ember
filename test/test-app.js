@@ -73,6 +73,8 @@ describe('run grunt', function () {
   var app;
   
   before(function (done) {
+    this.timeout(4000);
+    
     app = helpers
       .run(path.join(__dirname, '../app'))
       .inDir(path.join(os.tmpdir(), './temp-test'), function (dir) {
