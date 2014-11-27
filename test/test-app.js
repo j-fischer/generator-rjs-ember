@@ -24,6 +24,7 @@ describe('rjs-ember:app with skip-install option', function () {
       '.editorconfig',
       '.jshintrc',
       '.bowerrc',
+      '.gitignore',
       'Gruntfile.js'
     ]);
   });
