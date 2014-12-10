@@ -39,6 +39,7 @@ var RjsEmberGenerator = yeoman.generators.Base.extend({
       this.src.copy('jshintrc', '.jshintrc');
       this.src.copy('bowerrc', '.bowerrc');
       this.src.copy('gitignore', '.gitignore');
+      this.src.copy('hgignore', '.hgignore');
     }
   },
 
