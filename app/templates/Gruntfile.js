@@ -11,6 +11,7 @@ module.exports = function (grunt) {
   // configurable paths
   var config = {
       app: 'app',
+      test: 'test', 
       build: 'build',
       dist: 'dist'
   };
@@ -56,7 +57,7 @@ module.exports = function (grunt) {
         main: {
           options: {
             color: true,
-            directory: "app/bower_components"
+            directory: "<%= config.app %>/bower_components"
           }
         }
       },
@@ -64,8 +65,8 @@ module.exports = function (grunt) {
       requirejs: {
         main: {
           options: {
-            baseUrl: 'app',
-            mainConfigFile: 'app/scripts/require-config.js',
+            baseUrl: '<%= config.app %>',
+            mainConfigFile: '<%= config.app %>/scripts/require-config.js',
             paths: {
               'handlebars': 'bower_components/handlebars/handlebars.runtime',
               'ember': 'bower_components/ember/ember.prod',
@@ -115,7 +116,7 @@ module.exports = function (grunt) {
           all: [
               'Gruntfile.js',
               '<%= config.app %>/scripts/**/*.js',
-              'test/spec/{,*/}*.js'
+              '<%= config.test %>/spec/{,*/}*.js'
           ]
       },
 
@@ -170,13 +171,13 @@ module.exports = function (grunt) {
         dist: {
           options: {
             loadPath: [
-            "app/bower_components/bootstrap-sass-official/assets/stylesheets",
-            "app/styles"
+            "<%= config.app %>/bower_components/bootstrap-sass-official/assets/stylesheets",
+            "<%= config.app %>/styles"
             ],
             style: 'compressed'
           },
           files: {
-            '<%= config.app %>/styles/style.css': 'app/styles/style.scss'
+            '<%= config.app %>/styles/style.css': '<%= config.app %>/styles/style.scss'
           }
         }
       },
