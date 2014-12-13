@@ -63,42 +63,51 @@ module.exports = function (grunt) {
       },
 
       requirejs: {
+        options: {
+          baseUrl: '<%= config.app %>',
+          mainConfigFile: '<%= config.app %>/scripts/require-config.js',
+          paths: {
+            'handlebars': 'bower_components/handlebars/handlebars.runtime',
+            'ember': 'bower_components/ember/ember.prod',
+            'ember-data-lib': 'bower_components/ember-data/ember-data.prod'
+          },             
+        
+          name: 'main',
+          out: '<%= config.build %>/scripts/main.js',
+          wrap: false,
+          optimizeAllPluginResources : true,
+          findNestedDependencies : true,
+          skipModuleInsertion: false,
+          optimize: 'uglify2',
+          stubModules : ['text', 'ember-hbs'],
+          uglify2: {
+            output: {
+              semicolons: false
+            }
+          },
+          onBuildWrite: function (moduleName, path, contents) {
+            // Not pretty, but Handlebars is pretty unhappy living in a function()-wrapped script and is not AMD-compatible
+            if (path.match(/handlebars/)) {
+              return contents.replace(/var Handlebars =/g, 'window.Handlebars =');
+            }
+          
+            if (path.match(/ember/)) {
+              return contents.replace(/var Ember =/g, 'window.Ember =');
+            }
+
+            return contents;
+          }
+        },
         main: {
           options: {
-            baseUrl: '<%= config.app %>',
-            mainConfigFile: '<%= config.app %>/scripts/require-config.js',
-            paths: {
-              'handlebars': 'bower_components/handlebars/handlebars.runtime',
-              'ember': 'bower_components/ember/ember.prod',
-              'ember-data-lib': 'bower_components/ember-data/ember-data.prod'
-            },             
-          
-            name: 'main',
-            out: '<%= config.build %>/scripts/main.js',
-            wrap: false,
-            optimizeAllPluginResources : true,
-            findNestedDependencies : true,
             preserveLicenseComments : true,
-            skipModuleInsertion: false,
-            optimize: 'uglify2',
-            stubModules : ['text', 'ember-hbs'],
-            uglify2: {
-              output: {
-                semicolons: false
-              }
-            },
-            onBuildWrite: function (moduleName, path, contents) {
-              // Not pretty, but Handlebars is pretty unhappy living in a function()-wrapped script and is not AMD-compatible
-              if (path.match(/handlebars/)) {
-                return contents.replace(/var Handlebars =/g, 'window.Handlebars =');
-              }
-            
-              if (path.match(/ember/)) {
-                return contents.replace(/var Ember =/g, 'window.Ember =');
-              }
-
-              return contents;
-            }
+            generateSourceMaps: false
+          }
+        },
+        debug: {
+          options : {
+            preserveLicenseComments : false,
+            generateSourceMaps: true // requires preserveLicenseComments to be set to false!
           }
         }
       },
@@ -262,12 +271,27 @@ module.exports = function (grunt) {
     grunt.registerTask("bower-install", [ "bower-install-simple" ]);
 
     // Build 
-    grunt.registerTask('build', [
-      'clean:build',
-      'requirejs:main',
-      'sass',
-      'copy'
-    ]);
+    grunt.registerTask('build', '', 
+      function (target) {
+        if (target === 'debug') {
+          return grunt.task.run([
+            'clean:build',
+            'requirejs:debug',
+            'lint',
+            'sass',
+            'copy'
+          ]);
+        }
+      
+        grunt.task.run([
+          'clean:build',
+          'requirejs:main',
+          'lint',
+          'sass',
+          'copy'
+        ]);
+      }
+    );
   
     // Code Verification
     grunt.registerTask('lint', ['jshint']);
@@ -287,7 +311,7 @@ module.exports = function (grunt) {
           grunt.config.set('connect.options.hostname', '0.0.0.0');
         }
         if (target === 'dist') {
-          return grunt.task.run(['build', 'connect:dist:keepalive']);
+          return grunt.task.run(['build:debug', 'connect:dist:keepalive']);
         }
       
         grunt.task.run([
