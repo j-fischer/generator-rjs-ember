@@ -80,7 +80,7 @@ module.exports = function (grunt) {
             findNestedDependencies : true,
             preserveLicenseComments : true,
             skipModuleInsertion: false,
-            //optimize: 'uglify2',
+            optimize: 'uglify2',
             stubModules : ['text', 'ember-hbs'],
             uglify2: {
               output: {
