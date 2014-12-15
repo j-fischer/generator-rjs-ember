@@ -98,7 +98,7 @@ module.exports = function (grunt) {
             return contents;
           }
         },
-        main: {
+        prod: {
           options: {
             preserveLicenseComments : true,
             generateSourceMaps: false
@@ -285,7 +285,7 @@ module.exports = function (grunt) {
       
         grunt.task.run([
           'clean:build',
-          'requirejs:main',
+          'requirejs:prod',
           'lint',
           'sass',
           'copy'
