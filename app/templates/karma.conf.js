@@ -1,5 +1,4 @@
 //Karma configuration
-//Generated on Fri Feb 21 2014 14:16:24 GMT-0700 (MST)
 
 module.exports = function (config) {
   'use strict';
@@ -42,14 +41,14 @@ module.exports = function (config) {
       reporters: [
         {
           type : 'html',
-          dir:'coverage/unit/html'
+          dir:'docs/coverage/unit/html'
         },
         {
           type: 'text-summary'
         },
         {
           type : 'cobertura',
-          dir : 'coverage/unit/xml',
+          dir : 'docs/coverage/unit/xml',
           file: 'cobertura-coverage.xml'
         }
       ]

@@ -1,4 +1,5 @@
 require(['scripts/require-config'], function(){
+  
   require([
     'log4javascript',
     'bootstrap',
@@ -6,8 +7,14 @@ require(['scripts/require-config'], function(){
     'app-store',
     'app-registration',
     'application',
-    'applicationRoute'], function(){
-      console.log("MAIN ready!");
+    'applicationRoute'], 
+    
+    /**
+     * This is the application initializer.
+     * @module main
+     */
+    function () {
+      console.log("MAIN ready!");    
     }
   );  
 });

@@ -3,6 +3,10 @@ define(['jquery',
   'ember-data-lib',
   'handlebars'
 ],
+  /**
+   * This is the entry point of the application.
+   * @module application
+   */
   function($, Ember){
 
     var App = window.App = Ember.Application.create({

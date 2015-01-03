@@ -142,6 +142,15 @@ module.exports = function (grunt) {
           ]
         }
       },
+      
+      jsdoc : {
+        dist : {
+          src: ['<%= config.app %>/*.js', '<%= config.app %>/scripts/*.js', '<%= config.app %>/scripts/**/*.js'], 
+          options: {
+              destination: 'docs/jsdoc'
+          }
+        }
+      },
 
       copy: {
         build: {
@@ -273,23 +282,24 @@ module.exports = function (grunt) {
     // Build 
     grunt.registerTask('build', '', 
       function (target) {
+        var tasks = ['clean:build'];
+        
         if (target === 'debug') {
-          return grunt.task.run([
-            'clean:build',
-            'requirejs:debug',
-            'lint',
-            'sass',
-            'copy'
-          ]);
+          tasks.push('requirejs:debug');
+        } else {
+          tasks.push('requirejs:prod');
         }
-      
-        grunt.task.run([
-          'clean:build',
-          'requirejs:prod',
-          'lint',
-          'sass',
-          'copy'
-        ]);
+        
+        tasks.push('lint');
+        
+        if (grunt.option('jsdoc')) {
+          tasks.push('jsdoc');
+        }
+        
+        tasks.push('sass');
+        tasks.push('copy');
+        
+        grunt.task.run(tasks);
       }
     );
   
