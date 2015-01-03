@@ -1,5 +1,9 @@
-app/bower_components
+build
+dist
+docs
 node_modules
 .sass-cache
+
+app/bower_components
 app/styles/style.css
 app/styles/style.css.map
