@@ -6,8 +6,8 @@
 
 * CSS Autoprefixing
 * Built-in preview server with LiveReload
-* Automagically compile Sass
-* Automagically lint your scripts
+* Automatically compile Sass
+* Automatically lint your scripts
 * Unit Testing with Karma and PhantomJS
 * Bootstrap for Sass
 * Dependency management with Bower
@@ -19,7 +19,7 @@ For more information on what `generator-rjs-ember` can do for you, take a look a
 
 - Install: `npm install -g generator-rjs-ember`
 - Run: `yo rjs-ember`
-- Run `grunt` for building and `grunt serve` for preview[\*](#grunt-serve-note). `--allow-remote` option for remote access.
+- Run `grunt` for building and `grunt serve` to preview. You can use the `--allow-remote` option for remote access.
 
 
 #### Third-Party Dependencies
@@ -34,10 +34,6 @@ There are two non-managed libraries by Matt Mastracci part of this solution:
 and
 requirejs-handlebars
 
-#### Grunt Serve Note
-
-Note: `grunt server` was used for previewing in earlier versions of the project, and has since been deprecated in favor of `grunt serve`.
-
 
 ## Options
 
@@ -51,14 +47,14 @@ This is a standalone application. The 'index.html' file is the container of the 
 build script will replace some paths references in the file when creating the final distribution. 'main.js' is the entry point of the application. It will load the 'reuqire-config.js' file 
 and set up the initial dependencies. From there, the application route will be the entry point for the actual application. There is a folder called 'services', which is currently empty. The 
 intention with this folder is to separate the business logic from the controllers. Services should extend from Ember.Object and be registered and injected through the 
-applicationRegistration.js file, which will guarantee the proper order of the instantiations. 
+applicationRegistration.js file. 
 
 The advantage that I see in this architecture is cleaner organization of dependencies. Controllers should only depend on services, not other controllers. And services should only be 
 loosly coupled by passing another service to a method as an argument. 
 
 Another advantage with RequireJS and Ember is that RequireJS allows for encapsulation where one can define "private static" helper functions outside of the Ember object declaration. 
 
-I hope this setup will allow for a better organisation of the code. 
+I hope this setup will allow for a better organization of the code. 
 
 ## Contribute
 
