@@ -4,7 +4,15 @@ var path = require('path');
 var yeoman = require('yeoman-generator');
 var yosay = require('yosay');
 
-var RjsEmberGenerator = yeoman.generators.Base.extend({
+module.exports = yeoman.Base.extend({
+  
+  _copy: function(src, dest) {
+    this.fs.copy(
+      this.templatePath(src),
+      this.destinationPath(dest)
+    );
+  },
+  
   initializing: function () {
     this.pkg = require('../package.json');
     
@@ -25,21 +33,21 @@ var RjsEmberGenerator = yeoman.generators.Base.extend({
 
   writing: {
     app: function () {
-      this.src.copy('package.json', 'package.json');
-      this.src.copy('bower.json', 'bower.json');
-      this.src.copy('Gruntfile.js', 'Gruntfile.js');
-      this.src.copy('karma.conf.js', 'karma.conf.js');
+      this._copy('package.json', 'package.json');
+      this._copy('bower.json', 'bower.json');
+      this._copy('Gruntfile.js', 'Gruntfile.js');
+      this._copy('karma.conf.js', 'karma.conf.js');
       
       this.directory('app', 'app');
       this.directory('test', 'test');
     },
 
     projectfiles: function () {
-      this.src.copy('editorconfig', '.editorconfig');
-      this.src.copy('jshintrc', '.jshintrc');
-      this.src.copy('bowerrc', '.bowerrc');
-      this.src.copy('gitignore', '.gitignore');
-      this.src.copy('hgignore', '.hgignore');
+      this._copy('editorconfig', '.editorconfig');
+      this._copy('jshintrc', '.jshintrc');
+      this._copy('bowerrc', '.bowerrc');
+      this._copy('gitignore', '.gitignore');
+      this._copy('hgignore', '.hgignore');
     }
   },
 
@@ -63,5 +71,3 @@ var RjsEmberGenerator = yeoman.generators.Base.extend({
     });
   }
 });
-
-module.exports = RjsEmberGenerator;

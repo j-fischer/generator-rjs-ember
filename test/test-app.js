@@ -5,8 +5,8 @@ var path = require('path');
 var fs = require('fs-extra');
 var exec = require('child_process').exec;
 var expect = require ('chai').expect;
-var assert = require('yeoman-generator').assert;
-var helpers = require('yeoman-generator').test;
+var assert = require('yeoman-assert');
+var helpers = require('yeoman-test');
 var os = require('os');
 
 describe('rjs-ember:app with skip-install option', function () {
