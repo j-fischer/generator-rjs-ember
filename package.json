@@ -1,6 +1,6 @@
 {
   "name": "generator-rjs-ember",
-  "version": "0.3.1",
+  "version": "0.4.0",
   "description": "Yeoman generator for a web application using RequireJS and Ember",
   "license": "MIT",
   "main": "app/index.js",
@@ -14,9 +14,9 @@
     "node": ">=0.10.0"
   },
   "scripts": {
-      "test": "mocha",
-      "postversion": "git push && git push --tags"
-    },
+    "test": "mocha",
+    "postversion": "git push && git push --tags"
+  },
   "files": [
     "app"
   ],
